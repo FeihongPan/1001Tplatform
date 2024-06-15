@@ -1,5 +1,3 @@
-#include "MainProject/View/mainwindow.h"
-
 #include "Logger/loggermanager.h"
 #include "FileSystem/fileoperatormanager.h"
 #include "AppConfig/Manager/appconfigmanager.h"
@@ -7,15 +5,13 @@
 #include "NetworkEquipmentMonitor/Manage/heartbeat.h"
 
 #include <iostream>
-#include <QApplication>
+#include <QCoreApplication>
 
 using namespace NS_Log;
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    QCoreApplication a(argc, argv);
 
     // MqttClient
     AppConfigManager::getInstance()->SetPath(m_AppConfig.appDataPath + "AppConfig", m_AppConfig.appDataPath_Backup + "AppConfig",

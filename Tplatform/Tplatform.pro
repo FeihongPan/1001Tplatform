@@ -1,7 +1,5 @@
-QT  += core gui
+QT  -= gui
 QT  += network xml serialport printsupport
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Tplatform
 

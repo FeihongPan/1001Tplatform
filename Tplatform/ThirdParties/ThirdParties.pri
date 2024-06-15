@@ -19,11 +19,11 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../ThirdParties/CommonL
 else:unix: LIBS += -L$$PWD/../ThirdParties/CommonLib/lib/ -lCommonLib
 
 CONFIG(debug, debug|release) {
-    commonlib_dll.files = $$PWD/CommonLib/bin/CommonLibd.dll
-    commonlib_dll.path = $$OUT_PWD/debug
+    CommonLib_dll.files = $$PWD/CommonLib/lib/CommonLibd.dll
+    CommonLib_dll.path = $$OUT_PWD/debug
 }else {
-    commonlib_dll.files = $$PWD/CommonLib/bin/CommonLib.dll
-    commonlib_dll.path = $$OUT_PWD/release
+    CommonLib_dll.files = $$PWD/CommonLib/lib/CommonLib.dll
+    CommonLib_dll.path = $$OUT_PWD/release
 }
 
 INCLUDEPATH += $$PWD/CommonLib/include
@@ -35,49 +35,33 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../ThirdParties/TCommon
 else:unix: LIBS += -L$$PWD/../ThirdParties/TCommonLib/lib/ -lTCommonLib
 
 CONFIG(debug, debug|release) {
-    tcommonlib_dll.files = $$PWD/TCommonLib/bin/TCommonLibd.dll
-    tcommonlib_dll.path = $$OUT_PWD/debug
+    TCommonLib_dll.files = $$PWD/TCommonLib/lib/TCommonLibd.dll
+    TCommonLib_dll.path = $$OUT_PWD/debug
 }else {
-    tcommonlib_dll.files = $$PWD/TCommonLib/bin/TCommonLib.dll
-    tcommonlib_dll.path = $$OUT_PWD/release
+    TCommonLib_dll.files = $$PWD/TCommonLib/lib/TCommonLib.dll
+    TCommonLib_dll.path = $$OUT_PWD/release
 }
 
 INCLUDEPATH += $$PWD/TCommonLib/include
 DEPENDPATH += $$PWD/TCommonLib/include
 
-#GUIComponentLib
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../ThirdParties/GUIComponentLib/lib/ -lGUIComponentLib
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../ThirdParties/GUIComponentLib/lib/ -lGUIComponentLibd
-else:unix: LIBS += -L$$PWD/../ThirdParties/GUIComponentLib/lib/ -lGUIComponentLib
+#MCtrlCommFuncLib
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../ThirdParties/MCtrlCommFuncLib/lib/ -lMCtrlCommFuncLib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../ThirdParties/MCtrlCommFuncLib/lib/ -lMCtrlCommFuncLibd
+else:unix: LIBS += -L$$PWD/../ThirdParties/MCtrlCommFuncLib/lib/ -lMCtrlCommFuncLib
 
 CONFIG(debug, debug|release) {
-    guicomponentlib_dll.files = $$PWD/GUIComponentLib/bin/GUIComponentLibd.dll
-    guicomponentlib_dll.path = $$OUT_PWD/debug
+    MCtrlCommFuncLib_dll.files = $$PWD/MCtrlCommFuncLib/lib/MCtrlCommFuncLibd.dll
+    MCtrlCommFuncLib_dll.path = $$OUT_PWD/debug
 }else {
-    guicomponentlib_dll.files = $$PWD/GUIComponentLib/bin/GUIComponentLib.dll
-    guicomponentlib_dll.path = $$OUT_PWD/release
+    MCtrlCommFuncLib_dll.files = $$PWD/MCtrlCommFuncLib/lib/MCtrlCommFuncLib.dll
+    MCtrlCommFuncLib_dll.path = $$OUT_PWD/release
 }
 
-INCLUDEPATH += $$PWD/GUIComponentLib/include
-DEPENDPATH += $$PWD/GUIComponentLib/include
+INCLUDEPATH += $$PWD/../ThirdParties/MCtrlCommFuncLib/include
+DEPENDPATH += $$PWD/../ThirdParties/MCtrlCommFuncLib/include
 
-#CommonFunctionLib
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../ThirdParties/CommonFunctionLib/lib/ -lCommonFunctionLib
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../ThirdParties/CommonFunctionLib/lib/ -lCommonFunctionLibd
-else:unix: LIBS += -L$$PWD/../ThirdParties/CommonFunctionLib/lib/ -lCommonFunctionLib
+COPIES += CommonLib_dll \
+          TCommonLib_dll \
+          MCtrlCommFuncLib_dll
 
-CONFIG(debug, debug|release) {
-    commonfunctionlib_dll.files = $$PWD/CommonFunctionLib/bin/CommonFunctionLibd.dll
-    commonfunctionlib_dll.path = $$OUT_PWD/debug
-}else {
-    commonfunctionlib_dll.files = $$PWD/CommonFunctionLib/bin/CommonFunctionLib.dll
-    commonfunctionlib_dll.path = $$OUT_PWD/release
-}
-
-INCLUDEPATH += $$PWD/CommonFunctionLib/include
-DEPENDPATH += $$PWD/CommonFunctionLib/include
-
-COPIES += commonlib_dll \
-          tcommonlib_dll \
-          guicomponentlib_dll \
-          commonfunctionlib_dll
